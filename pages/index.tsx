@@ -2,10 +2,12 @@
 import Head from "next/head";
 import Image from "next/image";
 import Header from "../components/Header";
+import Banner from "./../components/Banner";
 import Row from "../components/Row";
 import { Movie } from "../typings";
 import requests from "../utils/requests";
-import Banner from "./../components/Banner";
+import useAuth from "../hooks/useAuth";
+import { log } from "console";
 
 interface Props {
   netflixOriginals: Movie[]; //decalring each of these as array of movie
@@ -30,6 +32,7 @@ const Home = ({
   trendingNow,
 }: // products,
 Props) => {
+  const { user, loading } = useAuth();
   return (
     <div className="relative h-screen bg-gradient-to-b from-gray-900/10 to-[#010511] lg:h-[140vh]">
       <Head>
